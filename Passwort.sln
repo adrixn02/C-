@@ -1,25 +1,49 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.10.34928.147
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{89ED484C-5479-4913-892A-8DDDE04AA150}"
-EndProject
-Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{89ED484C-5479-4913-892A-8DDDE04AA150}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{89ED484C-5479-4913-892A-8DDDE04AA150}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{89ED484C-5479-4913-892A-8DDDE04AA150}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{89ED484C-5479-4913-892A-8DDDE04AA150}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {DC7D32AD-9928-475C-A29D-C1E78C508F96}
-	EndGlobalSection
-EndGlobal
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp1
+{
+    internal class Program
+    {
+        public static string PasswortGenerieren(int anzahl)
+        {           
+{               string passwort = "";
+
+                int ascii = 0;
+
+                int merker = 0;
+
+                char wert = (char)0;
+                Random rnd = new Random();
+
+                do
+                {
+                    passwort = "";
+
+                    merker = 0;
+
+                    for (int i = 0; i <anzahl; i++)
+                    {
+                        ascii =  rnd.Next(33,127)+1;
+
+                        if (ascii >= 48 && ascii <= 57)
+                            merker++;
+
+                        wert = (char)ascii;
+                        passwort += wert;
+                    }
+                } while (merker != 2);
+
+                return passwort;
+}
+        }
+        static void Main(string[] args)
+        {
+            Console.WriteLine(PasswortGenerieren(5));
+            Console.ReadLine(); 
+        }
+    }
+}
